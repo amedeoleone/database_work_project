@@ -1,0 +1,7 @@
+SELECT RecensioniRecenti.mail, RecensioniRecenti.ruolo_ricoperto,Recensione_stipendio.importo_stipendio AS salario
+FROM RecensioniRecenti
+JOIN recensione_stipendio ON RecensioniRecenti.ruolo_ricoperto = recensione_stipendio.posizione_lavorativa
+JOIN stipendio ON recensione_stipendio.codice_s = stipendio.codice_s
+WHERE recensione_stipendio.importo_stipendio >=40000
+GROUP BY RecensioniRecenti.mail, RecensioniRecenti.ruolo_ricoperto,Recensione_stipendio.importo_stipendio
+ORDER BY salario DESC;
